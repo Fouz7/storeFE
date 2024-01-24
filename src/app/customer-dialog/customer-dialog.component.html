@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Add</h1>
+<div mat-dialog-content >
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="form">
+        <div class="row-field">
+            <mat-form-field>
+                <label>Customer Code</label>
+                <input matInput placeholder="Code" formControlName="customer_code">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Customer Name</label>
+                <input matInput placeholder="Name" formControlName="customer_name">
+            </mat-form-field>
+        </div>
+        <div class="row-field">
+            <mat-form-field>
+                <label>Customer Address</label>
+                <input matInput placeholder="Address" formControlName="customer_address">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Customer Phone</label>
+                <input matInput placeholder="Phone" formControlName="customer_phone">
+            </mat-form-field>
+        </div>
+        <div class="row-field">
+            <mat-form-field>
+                <label>Last Order Date</label>
+                <input matInput placeholder="Last Order Date" formControlName="last_order_date">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Picture</label>
+                <input matInput placeholder="Picture" formControlName="pic">
+            </mat-form-field>
+        </div>
+        <label>Active</label>
+        <mat-radio-group formControlName="is_active" class="col-field">
+            <div>
+                <mat-radio-button [value]="true">True</mat-radio-button>
+                <mat-radio-button [value]="false">False</mat-radio-button>
+            </div>
+        </mat-radio-group>
+        <button mat-button type="submit" [disabled]="!customerForm.valid">Submit</button>
+    </form>
+</div>

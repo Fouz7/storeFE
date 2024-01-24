@@ -1,0 +1,66 @@
+<div class="filter">
+    <input (input)="applyFilter($event)" placeholder="Search" class="searchbar">
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<mat-table [dataSource]="filteredCustomers">
+    <ng-container matColumnDef="customer_id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{ customer.customer_id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="pic">
+        <mat-header-cell *matHeaderCellDef>Picture</mat-header-cell>
+        <mat-cell *matCellDef="let customer">
+            <img [src]="'assets/' + customer.pic" alt="Customer Picture" width="45" height="45" class="pp">
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="customer_code">
+        <mat-header-cell *matHeaderCellDef>Code</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{ customer.customer_code }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="customer_name">
+        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{ customer.customer_name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="customer_address">
+        <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{ customer.customer_address }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="customer_phone">
+        <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{ customer.customer_phone }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="is_active">
+        <mat-header-cell *matHeaderCellDef>Active</mat-header-cell>
+        <mat-cell *matCellDef="let customer">
+            <mat-icon [ngClass]="{'check': customer.is_active, 'close': !customer.is_active}" [color]="customer.is_active ? 'accent' : 'warn'">
+                {{ customer.is_active ? 'check' : 'close' }}
+            </mat-icon> 
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="last_order_date">
+        <mat-header-cell *matHeaderCellDef>Last Order Date</mat-header-cell>
+        <mat-cell *matCellDef="let customer">{{ customer.last_order_date }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="actions-header">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Actions</mat-header-cell>
+        <mat-cell *matCellDef="let customer">
+            <button mat-button (click)="openEditDialog(customer)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button (click)="deleteCustomer(customer.customer_id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

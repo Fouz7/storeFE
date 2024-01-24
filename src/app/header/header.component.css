@@ -1,0 +1,16 @@
+.custom-toolbar{
+    display: flex;
+    justify-content: space-between;
+}
+
+.button{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+}
+
+.button button:first-child {
+    margin-right: 20px;
+    margin-top: 3px;
+}

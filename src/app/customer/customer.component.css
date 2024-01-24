@@ -1,0 +1,28 @@
+.actions {
+    display: flex;
+    flex-direction: column; 
+}
+
+.pp {
+    border-radius: 50%;
+}
+
+.searchbar {
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    width: 200px;
+    background: none;
+    color: white;
+}
+
+.filter{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+    
+    

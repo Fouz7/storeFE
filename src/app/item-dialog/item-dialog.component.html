@@ -1,0 +1,39 @@
+<h1 matDialogTitle>Add</h1>
+<div mat-dialog-content>
+    <form [formGroup]="itemForm" (ngSubmit)="onSubmit()" class="form">
+        <div class="row-field">
+            <mat-form-field>
+                <label>Item Code</label>
+                <input matInput placeholder="Code" formControlName="item_code">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Item Name</label>
+                <input matInput placeholder="Name" formControlName="item_name">
+            </mat-form-field>
+        </div>
+        <div class="row-field">
+            <mat-form-field>
+                <label>Last Restock</label>
+                <input matInput placeholder="Price" formControlName="last_re_stock">
+            </mat-form-field>
+            <mat-form-field>
+                <label>Stock</label>
+                <input matInput placeholder="Stock" formControlName="stock">
+            </mat-form-field>
+        </div>
+        <div class="row-field">
+            <label>Active</label>
+            <mat-radio-group formControlName="is_available" class="col-field">
+                <div>
+                    <mat-radio-button [value]="true">True</mat-radio-button>
+                    <mat-radio-button [value]="false">False</mat-radio-button>
+                </div>
+            </mat-radio-group>
+            <mat-form-field>
+                <label>Price</label>
+                <input matInput placeholder="Price" formControlName="price">
+            </mat-form-field>
+        </div>
+        <button mat-button type="submit" [disabled]="!itemForm.valid">Submit</button>
+    </form>
+</div>

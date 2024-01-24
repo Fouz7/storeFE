@@ -1,0 +1,15 @@
+<mat-toolbar color="primary" class="custom-toolbar">
+    <nav>
+        <a mat-button routerLink="/customer">Customer</a>
+        <a mat-button routerLink="/item">Item</a>
+        <a mat-button routerLink="/order">Order</a>
+    </nav>
+    <div class="button">
+        <button mat-flat-button (click)="generateReport()">
+            Summarize
+        </button>
+        <button mat-mini-fab color="accent" (click)="openDialog()">
+                <mat-icon>add</mat-icon>
+        </button>
+    </div>
+</mat-toolbar>

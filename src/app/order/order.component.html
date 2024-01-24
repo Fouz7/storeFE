@@ -1,0 +1,57 @@
+<div class="filter">
+    <input (input)="applyFilter($event)" placeholder="Search" class="searchbar">
+    <mat-paginator [pageSizeOptions]="[10, 20]" showFirstLastButtons></mat-paginator>
+</div>
+<mat-table [dataSource]="filteredOrders">
+    <ng-container matColumnDef="order_id">
+        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
+        <mat-cell *matCellDef="let order">{{ order.order_id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="order_code">
+        <mat-header-cell *matHeaderCellDef>Code</mat-header-cell>
+        <mat-cell *matCellDef="let order">{{ order.order_code }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="order_date">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell *matCellDef="let order">{{ order.order_date }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="customer_code">
+        <mat-header-cell *matHeaderCellDef>Customer Code</mat-header-cell>
+        <mat-cell *matCellDef="let order">{{ order.customer_code.customer_id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="item_code">
+        <mat-header-cell *matHeaderCellDef>Item Code</mat-header-cell>
+        <mat-cell *matCellDef="let order">{{ order.item_code.item_id }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="quantity">
+        <mat-header-cell *matHeaderCellDef>Quantity</mat-header-cell>
+        <mat-cell *matCellDef="let order">{{ order.quantity }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="total_price">
+        <mat-header-cell *matHeaderCellDef>Total Price</mat-header-cell>
+        <mat-cell *matCellDef="let order">{{ order.total_price }}</mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="actions-header">Actions</mat-header-cell>
+        <mat-cell *matCellDef="let order">
+            <button mat-button (click)="openEditDialog(order)">
+                <mat-icon>edit</mat-icon>
+            </button>
+            <button mat-button (click)="deleteOrder(order.order_id)">
+                <mat-icon>delete</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

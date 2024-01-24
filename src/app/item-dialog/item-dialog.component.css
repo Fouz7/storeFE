@@ -1,0 +1,22 @@
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.row-field{
+    display: flex;
+    flex-direction: row;
+}
+
+.col-field{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.form .row-field{
+    margin-bottom: -20px;
+    margin-right: 10px;
+}
