@@ -31,15 +31,20 @@ export class HeaderComponent {
   verticalPosition: MatSnackBarVerticalPosition = 'top';
 
 
-    generateReport(){
-      const format = 'pdf';
-      this.reportService.summarize(format).subscribe();
-      this.snackbar.open('The Summary Report has been generated', '', {
-        horizontalPosition: this.horizontalPosition,
-        verticalPosition: this.verticalPosition,
-        duration: 2000,
-      });  
-    }
+  generateReport(){
+    const format = 'pdf';
+    this.reportService.summarize(format, { observe: 'response', responseType: 'blob' }).subscribe(
+      (response: any) => {
+        if (response.status === 200) {
+          this.snackbar.open('The Summary Report has been generated', '', {
+            horizontalPosition: this.horizontalPosition,
+            verticalPosition: this.verticalPosition,
+            duration: 2000,
+          });
+        }
+      }
+    );
+  }
       
     openDialog(): void {
       let dialogRef;

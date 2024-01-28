@@ -11,7 +11,7 @@ export class ReportService {
 
   constructor(private http: HttpClient) { }
 
-  summarize(format: string): Observable<string> {
-    return this.http.get<string>(`${apiUrl}/${format}`);
+  summarize(format: string, options?: any): Observable<any> {
+    return this.http.get(`${apiUrl}/${format}`, options);
   }
 }
